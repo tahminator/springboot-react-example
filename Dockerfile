@@ -16,7 +16,7 @@ COPY frontend/ ./
 RUN npm run build
 
 # ==== Backend Build Stage ====
-FROM openjdk:21-jdk AS backend-build
+FROM eclipse-temurin:21-jdk-jammy AS backend-build
 
 WORKDIR /app
 
@@ -38,7 +38,7 @@ RUN ./mvnw clean package -DskipTests
 
 
 # ==== Runtime Stage ====
-FROM openjdk:21-jdk
+FROM eclipse-temurin:21-jre-jammy
 
 WORKDIR /app
 
